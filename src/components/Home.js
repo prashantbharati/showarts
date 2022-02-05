@@ -12,13 +12,44 @@ export const Home = ({ posts, setPosts }) => {
     fullname: "",
     username: "",
     email: "",
+    nameError: "",
+    emailError: "",
   });
+
+  const validate = () => {
+    // let passwordError = "";
+    let ne = false,
+      ee = false;
+    if (postData.fullname.length < 4) {
+      ne = true;
+      setPostData({
+        ...postData,
+        nameError: "name should be more than 3 characters",
+      });
+      console.log(postData.nameError);
+    }
+
+    if (!postData.email.includes("@")) {
+      ee = true;
+      setPostData({ ...postData, emailError: "invalid email" });
+      console.log(postData.emailError);
+    }
+    console.log(ee, ne);
+    if (ne || ee) {
+      return false;
+    }
+
+    return true;
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const newposts = [...posts, postData];
-    clear();
-    setPosts(newposts);
+
+    if (validate() === true) {
+      const newposts = [...posts, postData];
+      clear();
+      setPosts(newposts);
+    }
     console.log(posts);
   };
 
@@ -42,6 +73,7 @@ export const Home = ({ posts, setPosts }) => {
             setPostData({ ...postData, fullname: e.target.value })
           }
         />
+        <div style={{ fontSize: 12, color: "red" }}>{postData.nameError}</div>
 
         <TextField
           name="username"
@@ -52,19 +84,18 @@ export const Home = ({ posts, setPosts }) => {
             setPostData({ ...postData, username: e.target.value })
           }
         />
-
         <TextField
           name="email"
+          required
           variant="outlined"
           label="Email"
           value={postData.email}
           onChange={(e) => setPostData({ ...postData, email: e.target.value })}
         />
-
+        <div style={{ fontSize: 12, color: "red" }}>{postData.emailError}</div>
         <Button variant="contained" color="primary" size="large" type="submit">
           Add More
         </Button>
-
         <Button component={Link} to="/next" variant="contained" color="primary">
           Submit
         </Button>
