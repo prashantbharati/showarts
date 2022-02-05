@@ -2,9 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { TextField, Button, Typography, Paper } from "@material-ui/core";
 
-export const Home = () => {
-  const [posts, setPosts] = useState([]);
-
+export const Home = ({ posts, setPosts }) => {
   const clear = () => {
     setPostData({ fullname: "", username: "", email: "" });
   };
