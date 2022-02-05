@@ -1,6 +1,7 @@
 import React from "react";
 
 export const List = ({ posts }) => {
+  console.log(posts);
   return (
     <div>
       {posts.map((post) => (
