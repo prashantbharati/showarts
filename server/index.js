@@ -3,9 +3,14 @@ import bodyParser from "body-parser";
 import mongoose from "mongoose";
 import cors from "cors";
 import dotenv from "dotenv";
+import postRoutes from "./posts.js";
 const app = express();
 
 dotenv.config();
+
+app.use(cors());
+
+app.use("/posts", postRoutes);
 
 const PORT = 5000;
 mongoose
