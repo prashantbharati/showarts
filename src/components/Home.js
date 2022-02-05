@@ -1,8 +1,14 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import { TextField, Button, Typography, Paper } from "@material-ui/core";
 
 export const Home = () => {
-  const posts = [];
+  const [posts, setPosts] = useState([]);
+
+  const clear = () => {
+    setPostData({ fullname: "", username: "", email: "" });
+  };
+  // const
 
   const [postData, setPostData] = useState({
     fullname: "",
@@ -12,15 +18,20 @@ export const Home = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    posts.push(postData);
+    const newposts = [...posts, postData];
+    clear();
+    setPosts(newposts);
     console.log(posts);
   };
 
   return (
     <div>
       {posts.map((post) => (
-        <div></div>
+        <div>
+          <p>{post.fullname}</p>
+          <p>{post.username}</p>
+          <p>{post.email}</p>
+        </div>
       ))}
 
       <form onSubmit={handleSubmit}>
@@ -53,6 +64,10 @@ export const Home = () => {
         />
 
         <Button variant="contained" color="primary" size="large" type="submit">
+          Add More
+        </Button>
+
+        <Button component={Link} to="/next" variant="contained" color="primary">
           Submit
         </Button>
       </form>
