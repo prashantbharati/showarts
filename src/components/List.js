@@ -35,10 +35,9 @@ export const List = ({ posts }) => {
     perform();
   }, []);
 
-  return (
-    // !data1.size ? (
-    //   <CircularProgress />
-    // ) : (
+  return !data1.size ? (
+    <CircularProgress />
+  ) : (
     <div>
       <BasicTable data1={data1} />
 
