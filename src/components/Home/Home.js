@@ -57,52 +57,74 @@ export const Home = ({ posts, setPosts }) => {
 
   return (
     <div>
-      <div>
-        {posts.map((post) => (
-          <div>
-            <p>{post.fullname}</p>
-            <p>{post.username}</p>
-            <p>{post.email}</p>
-          </div>
-        ))}
-      </div>
+      {posts.map((post) => (
+        <div className={classes.form}>
+          <p className={classes.formitem}>{post.fullname}</p>
+
+          <p className={classes.formitem}>{post.username}</p>
+          <p className={classes.formitem}>{post.email}</p>
+        </div>
+      ))}
 
       <form onSubmit={handleSubmit}>
-        <TextField
-          name="fullname"
-          variant="outlined"
-          label="Full name"
-          value={postData.fullname}
-          onChange={(e) =>
-            setPostData({ ...postData, fullname: e.target.value })
-          }
-        />
+        <div className={classes.form}>
+          <TextField
+            name="fullname"
+            variant="outlined"
+            label="Full name"
+            value={postData.fullname}
+            onChange={(e) =>
+              setPostData({ ...postData, fullname: e.target.value })
+            }
+          />
+          <TextField
+            name="username"
+            variant="outlined"
+            label="Username"
+            value={postData.username}
+            onChange={(e) =>
+              setPostData({ ...postData, username: e.target.value })
+            }
+          />
+          <TextField
+            name="email"
+            required
+            variant="outlined"
+            label="Email"
+            value={postData.email}
+            onChange={(e) =>
+              setPostData({ ...postData, email: e.target.value })
+            }
+          />
+        </div>
         <div style={{ fontSize: 12, color: "red" }}>{postData.nameError}</div>
-
-        <TextField
-          name="username"
-          variant="outlined"
-          label="Username"
-          value={postData.username}
-          onChange={(e) =>
-            setPostData({ ...postData, username: e.target.value })
-          }
-        />
-        <TextField
-          name="email"
-          required
-          variant="outlined"
-          label="Email"
-          value={postData.email}
-          onChange={(e) => setPostData({ ...postData, email: e.target.value })}
-        />
         <div style={{ fontSize: 12, color: "red" }}>{postData.emailError}</div>
-        <Button variant="contained" color="primary" size="large" type="submit">
-          Add More
-        </Button>
-        <Button component={Link} to="/next" variant="contained" color="primary">
-          Submit
-        </Button>
+        <br />
+        <div className={classes.form}>
+          <Button
+            variant="contained"
+            color="primary"
+            size="large"
+            type="submit"
+          >
+            Add More
+          </Button>
+          <Button variant="contained" color="primary" size="large">
+            Remove
+          </Button>
+        </div>
+        <br />
+        <div className={classes.form}>
+          <Button
+            component={Link}
+            to="/next"
+            variant="contained"
+            color="primary"
+            size="large"
+          >
+            Submit
+          </Button>
+        </div>
       </form>
     </div>
   );
