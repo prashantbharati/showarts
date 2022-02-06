@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { TextField, Button, Typography, Paper } from "@material-ui/core";
+import { TextField, Button } from "@material-ui/core";
 import useStyles from "./styles";
 
 export const Home = ({ posts, setPosts }) => {
