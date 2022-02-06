@@ -3,8 +3,9 @@ import axios from "axios";
 
 const api = axios.create({ baseURL: `http://localhost:5000/posts` });
 
-export const List = async ({ posts }) => {
-  // console.log(posts);
+export const List = ({ posts }) => {
+  console.log(posts);
+
   posts.map(async (post) => {
     const { data } = await api.post("/", {
       fullname: post.fullname,
@@ -12,19 +13,23 @@ export const List = async ({ posts }) => {
       email: post.email,
     });
     try {
-      console.log(data);
+      console.log(data, "post");
     } catch (error) {
       console.log(error);
     }
   });
 
-  const data = await api.get("/");
-  try {
-    console.log(data);
-  } catch (error) {
-    console.log(error);
-  }
-
+  let data1;
+  const perform = async () => {
+    const { data } = await api.get("/");
+    try {
+      data1 = data;
+      console.log(data1, "get");
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  perform();
   return (
     <div>
       {posts.map((post) => (

@@ -48,11 +48,13 @@ export const Home = ({ posts, setPosts }) => {
     e.preventDefault();
 
     if (validate() === true) {
-      const newposts = [...posts, postData];
-      clear();
+      const newposts = [postData, ...posts];
       setPosts(newposts);
+
+      clear();
+      console.log(posts);
     }
-    console.log(posts);
+    // console.log(posts);
   };
 
   return (
@@ -66,6 +68,7 @@ export const Home = ({ posts, setPosts }) => {
         </div>
       ))}
 
+      <br />
       <form onSubmit={handleSubmit}>
         <div className={classes.form}>
           <TextField
