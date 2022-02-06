@@ -25,9 +25,21 @@ export default function BasicTable({ data1 }) {
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
         <TableHead>
           <TableRow>
-            <TableCell style={{ fontWeight: "10px" }}>Full Name</TableCell>
-            <TableCell align="right">Username</TableCell>
-            <TableCell align="right">Email&nbsp;(g)</TableCell>
+            <TableCell style={{ fontWeight: "bold", fontSize: "25px" }}>
+              Full Name
+            </TableCell>
+            <TableCell
+              align="right"
+              style={{ fontWeight: "bold", fontSize: "25px" }}
+            >
+              Username
+            </TableCell>
+            <TableCell
+              align="right"
+              style={{ fontWeight: "bold", fontSize: "25px" }}
+            >
+              Email&nbsp;(g)
+            </TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
