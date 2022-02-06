@@ -44,6 +44,11 @@ export const Home = ({ posts, setPosts }) => {
     return true;
   };
 
+  const handlemyclick = () => {
+    const newposts = posts.slice(1);
+    setPosts(newposts);
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -100,8 +105,12 @@ export const Home = ({ posts, setPosts }) => {
             }
           />
         </div>
-        <div style={{ fontSize: 12, color: "red" }}>{postData.nameError}</div>
-        <div style={{ fontSize: 12, color: "red" }}>{postData.emailError}</div>
+        <div className={classes.form}>
+          <div style={{ fontSize: 14, color: "red" }}>{postData.nameError}</div>
+          <div style={{ fontSize: 14, color: "red" }}>
+            {postData.emailError}
+          </div>
+        </div>
         <br />
         <div className={classes.form}>
           <Button
@@ -112,7 +121,12 @@ export const Home = ({ posts, setPosts }) => {
           >
             Add More
           </Button>
-          <Button variant="contained" color="primary" size="large">
+          <Button
+            variant="contained"
+            color="primary"
+            size="large"
+            onClick={handlemyclick}
+          >
             Remove
           </Button>
         </div>

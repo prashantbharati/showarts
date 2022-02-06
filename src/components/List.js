@@ -35,7 +35,7 @@ export const List = ({ posts }) => {
     perform();
   }, []);
 
-  return !data1.size ? (
+  return !data1.length ? (
     <CircularProgress />
   ) : (
     <div>
