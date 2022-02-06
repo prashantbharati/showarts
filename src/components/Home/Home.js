@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { TextField, Button, Typography, Paper } from "@material-ui/core";
+import useStyles from "./styles";
 
 export const Home = ({ posts, setPosts }) => {
+  const classes = useStyles();
   const clear = () => {
     setPostData({ fullname: "", username: "", email: "" });
   };
@@ -55,13 +57,15 @@ export const Home = ({ posts, setPosts }) => {
 
   return (
     <div>
-      {posts.map((post) => (
-        <div>
-          <p>{post.fullname}</p>
-          <p>{post.username}</p>
-          <p>{post.email}</p>
-        </div>
-      ))}
+      <div>
+        {posts.map((post) => (
+          <div>
+            <p>{post.fullname}</p>
+            <p>{post.username}</p>
+            <p>{post.email}</p>
+          </div>
+        ))}
+      </div>
 
       <form onSubmit={handleSubmit}>
         <TextField
