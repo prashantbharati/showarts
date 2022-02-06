@@ -8,7 +8,6 @@ export const Home = ({ posts, setPosts }) => {
   const clear = () => {
     setPostData({ fullname: "", username: "", email: "" });
   };
-  // const
 
   const [postData, setPostData] = useState({
     fullname: "",
@@ -19,7 +18,6 @@ export const Home = ({ posts, setPosts }) => {
   });
 
   const validate = () => {
-    // let passwordError = "";
     let ne = false,
       ee = false;
     if (postData.fullname.length < 4) {
@@ -59,7 +57,6 @@ export const Home = ({ posts, setPosts }) => {
       clear();
       console.log(posts);
     }
-    // console.log(posts);
   };
 
   return (
