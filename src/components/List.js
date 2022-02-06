@@ -44,14 +44,6 @@ export const List = ({ posts, setPosts }) => {
   ) : (
     <div>
       <BasicTable data1={data1} />
-
-      {/* {data1.map((data) => (
-        <div>
-          <p>{data.fullname}</p>
-          <p>{data.username}</p>
-          <p>{data.email}</p>
-        </div>
-      ))} */}
     </div>
   );
 };
