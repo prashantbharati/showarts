@@ -14,7 +14,11 @@ const App = () => {
           exact
           element={<Home posts={posts} setPosts={setPosts} />}
         />
-        <Route path="/next" exact element={<List posts={posts} />} />
+        <Route
+          path="/next"
+          exact
+          element={<List posts={posts} setPosts={setPosts} />}
+        />
       </Routes>
     </BrowserRouter>
   );

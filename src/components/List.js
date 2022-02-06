@@ -4,22 +4,24 @@ import BasicTable from "./table";
 import { CircularProgress } from "@material-ui/core";
 const api = axios.create({ baseURL: `http://localhost:5000/posts` });
 
-export const List = ({ posts }) => {
+export const List = ({ posts, setPosts }) => {
   console.log(posts);
   const [data1, setdata1] = useState([]);
 
-  posts.map(async (post) => {
-    const { data } = await api.post("/", {
-      fullname: post.fullname,
-      username: post.username,
-      email: post.email,
+  const performpost = () => {
+    posts.map(async (post) => {
+      const { data } = await api.post("/", {
+        fullname: post.fullname,
+        username: post.username,
+        email: post.email,
+      });
+      try {
+        console.log(data, "post");
+      } catch (error) {
+        console.log(error);
+      }
     });
-    try {
-      console.log(data, "post");
-    } catch (error) {
-      console.log(error);
-    }
-  });
+  };
 
   const perform = async () => {
     const res = await api.get("/");
@@ -32,7 +34,9 @@ export const List = ({ posts }) => {
   };
 
   useEffect(() => {
+    performpost();
     perform();
+    setPosts([]);
   }, []);
 
   return !data1.length ? (
