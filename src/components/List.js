@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
-
+import BasicTable from "./table";
+import { CircularProgress } from "@material-ui/core";
 const api = axios.create({ baseURL: `http://localhost:5000/posts` });
 
 export const List = ({ posts }) => {
   console.log(posts);
+  const [data1, setdata1] = useState([]);
 
   posts.map(async (post) => {
     const { data } = await api.post("/", {
@@ -19,26 +21,34 @@ export const List = ({ posts }) => {
     }
   });
 
-  let data1;
   const perform = async () => {
-    const { data } = await api.get("/");
+    const res = await api.get("/");
+    setdata1(res.data);
     try {
-      data1 = data;
       console.log(data1, "get");
     } catch (error) {
       console.log(error);
     }
   };
-  perform();
+
+  useEffect(() => {
+    perform();
+  }, []);
+
   return (
+    // !data1.size ? (
+    //   <CircularProgress />
+    // ) : (
     <div>
-      {posts.map((post) => (
+      <BasicTable data1={data1} />
+
+      {/* {data1.map((data) => (
         <div>
-          <p>{post.fullname}</p>
-          <p>{post.username}</p>
-          <p>{post.email}</p>
+          <p>{data.fullname}</p>
+          <p>{data.username}</p>
+          <p>{data.email}</p>
         </div>
-      ))}
+      ))} */}
     </div>
   );
 };

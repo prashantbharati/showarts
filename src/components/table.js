@@ -33,8 +33,8 @@ export default function BasicTable({ data1 }) {
         <TableBody>
           {data1.map((row) => (
             <TableRow
-              key={row.fullname}
-              sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+            //   key={row.fullname}
+            //   sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
             >
               <TableCell component="th" scope="row">
                 {row.fullname}
