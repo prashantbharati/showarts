@@ -2,7 +2,9 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import BasicTable from "./table";
 import { CircularProgress } from "@material-ui/core";
-const api = axios.create({ baseURL: `http://localhost:5000/posts` });
+const api = axios.create({
+  baseURL: `https://showarts-app.herokuapp.com//posts`,
+});
 
 export const List = ({ posts, setPosts }) => {
   console.log(posts);
@@ -37,7 +39,7 @@ export const List = ({ posts, setPosts }) => {
     performpost();
     perform();
     setPosts([]);
-  }, []);
+  }, [posts]);
 
   return !data1.length ? (
     <CircularProgress />
