@@ -3,7 +3,7 @@ import axios from "axios";
 import BasicTable from "./table";
 import { CircularProgress } from "@material-ui/core";
 const api = axios.create({
-  baseURL: `https://showarts-app.herokuapp.com//posts`,
+  baseURL: `https://showarts-app.herokuapp.com/posts`,
 });
 
 export const List = ({ posts, setPosts }) => {
